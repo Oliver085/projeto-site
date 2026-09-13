@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprenda Python | Introdução à Programação</title>
+    <style>
+        /* Reset e Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Cabeçalho / Navbar */
+        header {
+            background-color: #1e3a5f;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: #ffd43b;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd43b;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2b5b84 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 1.5rem 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 span {
+            color: #ffd43b;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ffd43b;
+            color: #1e3a5f;
+            font-weight: 700;
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            transition: transform 0.2s, background-color 0.2s;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #ffe066;
+            transform: translateY(-2px);
+        }
+
+        /* Seção Vantagens */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #1e3a5f;
+            margin-bottom: 2.5rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: #1e3a5f;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* Seção Exemplo de Código */
+        .code-section {
+            background-color: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 4rem 1.5rem;
+        }
+
+        .code-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #1e293b;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        .code-header {
+            background-color: #0f172a;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot.red { background-color: #ef4444; }
+        .dot.yellow { background-color: #eab308; }
+        .dot.green { background-color: #22c55e; }
+
+        .code-title {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-left: auto;
+        }
+
+        pre {
+            padding: 1.5rem;
+            color: #f1f5f9;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+        }
+
+        .comment { color: #64748b; }
+        .keyword { color: #38bdf8; }
+        .string { color: #4ade80; }
+        .function { color: #facc15; }
+
+        /* Rodapé */
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #ffd43b;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Navegação -->
+    <header>
+        <nav>
+            <div class="logo">
+                🐍 <span>Python</span> Aula
+            </div>
+            <ul class="nav-links">
+                <li><a href="#vantagens">Vantagens</a></li>
+                <li><a href="#exemplo">Primeiro Código</a></li>
+                <li><a href="https://www.python.org" target="_blank">Site Oficial</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção Hero / Destaque -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Aprenda a Programar com <span>Python</span></h1>
+            <p>Uma linguagem simples, poderosa e versátil, perfeita para quem está dando os primeiros passos no mundo do código.</p>
+            <a href="#exemplo" class="btn">Ver Primeiro Código</a>
+        </div>
+    </section>
+
+    <!-- Vantagens do Python -->
+    <section id="vantagens" class="container">
+        <h2 class="section-title">Por que aprender Python?</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">📖</div>
+                <h3>Sintaxe Clara</h3>
+                <p>O código em Python é limpo e parecido com o inglês, facilitando o aprendizado de quem nunca programou.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>Super Versátil</h3>
+                <p>Usado em Desenvolvimento Web, Inteligência Artificial, Ciência de Dados, Jogos e Automação de tarefas.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌍</div>
+                <h3>Comunidade Gigante</h3>
+                <p>Milhares de bibliotecas prontas e uma comunidade acolhedora sempre pronta para ajudar iniciantes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Primeiro Exemplo de Código -->
+    <section id="exemplo" class="code-section">
+        <div class="container" style="padding-top: 0; padding-bottom: 0;">
+            <h2 class="section-title">Seu Primeiro Código</h2>
+            <div class="code-box">
+                <div class="code-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="code-title">exemplo.py</span>
+                </div>
+                <pre><code><span class="comment"># Meu primeiro programa em Python</span>
+nome = <span class="string">"Estudante"</span>
+
+<span class="keyword">print</span>(<span class="string">f"Olá, {nome}! Bem-vindo ao mundo do Python."</span>)
+
+<span class="comment"># Exemplo de repetição simples:</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(1, 4):
+    <span class="keyword">print</span>(<span class="string">f"Passo {i} concluído! ✅"</span>)
+</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>Criado para fins educacionais • Aula de Introdução à Programação</p>
+        <p style="margin-top: 0.5rem;">Saiba mais na documentação oficial em <a href="https://www.python.org" target="_blank">python.org</a></p>
+    </footer>
+
+</body>
+</html>
